@@ -40,5 +40,5 @@ jobs:
           MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
           MLFLOW_EXPERIMENT_ID: ${{ secrets.MLFLOW_EXPERIMENT_ID }}
           
-         run: |
+        run: |
           python evaluacion.py
