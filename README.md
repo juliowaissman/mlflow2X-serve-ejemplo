@@ -58,12 +58,12 @@ Nota para Windows (Command Prompt): Usa `set` en lugar de `export`. Para PowerSh
 Una vez que las variables de entorno anteriores están configuradas en tu terminal, la CLI de MLflow puede comunicarse directamente con el Model Registry de Databricks. Para levantar el servidor web local utilizando el modelo campeón que definimos previamente, ejecuta:
 
 ```bash
-mlflow models serve -m "models:/Custom_Iris_Model@champion" -p 5000 --env-manager local
+mlflow models serve -m "models:/workspace.default.Iris_RF@champion" -p 5000 --env-manager local
 ````
 
 Si prefieres apuntar a una versión específica en lugar de un alias, simplemente cambia el URI del modelo:
 ```bash
-mlflow models serve -m "models:/Custom_Iris_Model/1" -p 5000 --env-manager local
+mlflow models serve -m "models:/workspace.default.Iris_RF/1" -p 5000 --env-manager local
 ```
 
 Recuerda que necesitas que todas las librerías que utilizas estén instaladas localmente, ya que todo se ejecuta local (aunque recuperes el modelo de un servidor de modelos externo). Una vez que el servidor esté levantado, podemos hacer peticiones de inferencia al modelo usando `curl` o cualquier cliente HTTP. Por ejemplo:
