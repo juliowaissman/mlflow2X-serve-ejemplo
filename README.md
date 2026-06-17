@@ -1,4 +1,4 @@
-# Ejemplo de uso de puesta en producción de modelos con MLflow 2.X
+# Ejemplo de uso de puesta en producción de modelos con MLflow 3.X
 
 Implementar un patrón Champion-Challenger (Campeón-Retador) utilizando el sabor `pyfunc` de MLflow es una buena prácticas para asegurar que solo los modelos que realmente mejoran tus métricas lleguen a producción, dándote además la flexibilidad de incluir lógica personalizada de pre y post procesamiento.
 
