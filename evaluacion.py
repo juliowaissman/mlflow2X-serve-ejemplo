@@ -15,7 +15,9 @@ if not tracking_uri:
 
 mlflow.set_tracking_uri(tracking_uri)
 client = MlflowClient()
-MODEL_NAME = "Iris_RF"
+
+mlflow.set_registry_uri("databricks-uc")
+MODEL_NAME = "workspace.default.Iris_RF"
 
 # Preparar datos de validación (idealmente, deberías bajarlos de un S3/Blob Storage)
 data = load_iris()
@@ -54,12 +56,12 @@ if __name__ == "__main__":
     
     # Lógica de CI/CD
     if challenger_acc > champion_acc:
-        print("✅ ¡El Challenger es mejor! Promoviendo a @champion.")
-        client.set_registered_model_alias(MODEL_NAME, "champion", challenger_version.version)
-        # Salida 0 = Éxito para GitHub Actions
-        sys.exit(0) 
+        print("El Challenger es mejor, reemplazando a @champion.")
+        client.set_registered_model_alias(
+            MODEL_NAME, "champion", challenger_version.version)
+        sys.exit(0) # Salida 0 = Éxito para GitHub Actions
     else:
-        print("⚠️ El Challenger no superó al Champion. No se promueve.")
+        print("El Challenger no superó al Champion")
         # Salida 0 = Sigue siendo éxito, el pipeline corrió bien, solo no promovió nada.
         # (Cámbialo a sys.exit(1) si quieres que el Pull Request marque una "X" roja si el modelo empeora).
         sys.exit(0)
