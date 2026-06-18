@@ -17,7 +17,7 @@ mlflow.set_tracking_uri(tracking_uri)
 client = MlflowClient()
 
 mlflow.set_registry_uri("databricks-uc")
-MODEL_NAME = "workspace.default.Iris_RF"
+MODEL_NAME = "workspace.default.simple"
 
 # Preparar datos de validación (idealmente, deberías bajarlos de un S3/Blob Storage)
 data = load_iris()
